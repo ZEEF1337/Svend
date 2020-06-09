@@ -21,6 +21,24 @@ routes = [
       }
     }
   },
+  {
+    name: 'overview',
+    path: '/overview/',
+    componentUrl: './pages/overview.html',
+    on:{
+      pageInit: function (event, page){
+      }
+    }
+  },
+  {
+    name: 'newticket',
+    path: '/newticket/',
+    componentUrl: './pages/newticket.html',
+    on:{
+      pageInit: function (event, page){
+      }
+    }
+  },
   // Default route (404 page). MUST BE THE LAST
   {
     name: 'notfound',
