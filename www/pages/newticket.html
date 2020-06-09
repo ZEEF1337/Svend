@@ -1,0 +1,83 @@
+<template>
+    <div class="page" data-name="newticket">
+        <div class="box">
+            <div class="boxcontent">
+                <div class="header">
+                    <p>Opret ny support ticket</p>
+                </div>
+                <input style="width: 100%;" class="outline tickettitle" type="text" placeholder="Ticket titel" />
+                <select style="width: 25%;" class="outline kategoriDropdown"></select>
+                <textarea style="width: 100%;" class="outline ticketbody" placeholder="Ticket besked" rows="16" cols="75"></textarea>
+                <button @click="go2Overview" class="btn">Annuller</button>
+                <button @click="postTicket" class="btn">Indsend</button>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+    return {
+
+        /**
+         * Det datasæt som framework7 bruger internt i dette view, de kan ikke tilgås udefra.
+         */
+        data: function () {
+            return {
+            };
+        },
+
+        // Framework7 Component Methods
+        methods: {
+            go2Overview(){
+                app.views.main.router.navigate("/overview/", { reloadCurrent: true, })
+            },
+
+            postTicket(){
+                let tickettitle = $$('.tickettitle').val();
+                let ticketbody = $$('.ticketbody').val();
+                let ticketcategory = $$('.kategoriDropdown').val();
+
+                if (tickettitle == "" || ticketbody == "") {
+                    window.alert("Venlig udfyld alle felter.");
+                    return;
+                }
+
+                app.request.post(`${app.data['serverIP']}postTicket.php`, {
+                    token: app.data['sessionToken'],
+                    title: tickettitle,
+                    body: ticketbody,
+                    category: ticketcategory,
+                }, function (response) {
+                    if (response.result == 0) {
+                        window.alert(response.message);
+                        return;
+                    } else {
+                        window.alert(response.message);
+                        app.views.main.router.navigate("/overview/", { reloadCurrent: true, })
+                    }
+                }, function (e, e2) { console.error(e); console.error(e2) }, "json");
+            }
+
+        },
+        on: {
+            //pageMounted trigger når siden bliver insat i DOMen
+            pageMounted: function (page) {
+                app.request.getJSON(`${app.data['serverIP']}getTicketKategorier.php`, {}, function (response) {
+                    if (response.result == 1) {
+                        let innerHTML = "";
+                        Object.keys(response.records).forEach((key, index) => {
+                            let value = response.records[key];
+                            innerHTML +=
+                                `<option value="${value.ID}">${value.Navn}</option> `;
+                        });
+                        $$('.kategoriDropdown').html(innerHTML);
+                    }
+                }, function (e, e2) { console.error(e); console.error(e2) });
+            },
+            pageAfterOut: function (page) {
+            }
+        },
+    }
+
+
+</script>
