@@ -1,0 +1,39 @@
+<template>
+    <div class="page" data-name="default">
+        <div class="login-page">
+            <div class="form">
+                <input type="text" placeholder="Brugernavn" />
+                <input type="password" placeholder="Adgangskode" />
+                <button>login</button>
+                <p class="message">Har du ikke en konto? <a href="/register/">Opret en gratis her</a></p>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+    return {
+
+        /**
+         * Det datasæt som framework7 bruger internt i dette view, de kan ikke tilgås udefra.
+         */
+        data: function () {
+            return {
+            };
+        },
+
+        // Framework7 Component Methods
+        methods: {
+
+        },
+        on: {
+            //pageMounted trigger når siden bliver insat i DOMen
+            pageMounted: function (page) {
+            },
+            pageAfterOut: function (page) {
+            }
+        },
+    }
+
+
+</script>

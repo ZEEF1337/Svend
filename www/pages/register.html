@@ -1,0 +1,45 @@
+<template>
+    <div class="page" data-name="default">
+        <div class="login-page">
+            <div class="form">
+                <input type="text" placeholder="Fornavn" />
+                <input type="text" placeholder="Efternavn" />
+                <input type="text" placeholder="Email" />
+                <input type="text" placeholder="Brugernavn" />
+                <input type="password" placeholder="Adgangskode" />
+                <button @click="register">Opret konto</button>
+                <p class="message">Har du allerede en konto? <a href="/login/">Login her</a></p>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+    return {
+
+        /**
+         * Det datasæt som framework7 bruger internt i dette view, de kan ikke tilgås udefra.
+         */
+        data: function () {
+            return {
+            };
+        },
+
+        // Framework7 Component Methods
+        methods: {
+            register() {
+
+            },
+
+        },
+        on: {
+            //pageMounted trigger når siden bliver insat i DOMen
+            pageMounted: function (page) {
+            },
+            pageAfterOut: function (page) {
+            }
+        },
+    }
+
+
+</script>
