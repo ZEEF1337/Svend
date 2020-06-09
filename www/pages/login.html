@@ -48,6 +48,7 @@
                     } else {
                         app.data['fornavn'] = response.firstname;
                         app.data['efternavn'] = response.lastname;
+                        app.data['sessionToken'] = response.token;
                         app.views.main.router.navigate("/overview/", { reloadCurrent: true, })
                     }
                 }, function (e, e2) { console.error(e); console.error(e2) }, "json");
