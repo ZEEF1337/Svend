@@ -35,22 +35,9 @@ html, body, #app{
   flex-grow: 1;
 }
 
-.boxtitle{
-  text-align: center;
-  border-bottom-style: solid;
-  border-width: 1px;
-  border-color: black;
-  font-size: 16px;
-  font-weight: bold;
-  padding: 5px 0 5px 0;
-}
-
 .boxcontent{
   padding: 35px;
 }
-
-
-
 
 .form {
   position: relative;
@@ -98,4 +85,54 @@ html, body, #app{
   color: #2894ee;
   text-decoration: none;
   margin-left: 5px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  text-align: center;
+}
+
+.header{
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+
+.overviewgrid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 15px;
+}
+
+.overviewbox{
+  border-style: solid;
+  border-width: 1px;
+  border-color: #1c2529;
+  height: 120px;
+  border-radius: 1%;
+}
+
+.overviewbox:hover{
+  border-color: #2894ee;
+  cursor: pointer;
+}
+
+.overviewpics{
+  width:75px;
+  height:75px;
+  margin-left:15px;
+  float: left;
+  margin-top: 25px;
+}
+
+.overviewtext{
+  float:left;
+  margin-left: 25px;
+  font-weight: bold;
+  font-size: 32px;
+  color:white;
+  margin-top: 15px;
 }
