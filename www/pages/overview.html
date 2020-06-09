@@ -1,7 +1,27 @@
 <template>
-    <div class="page" data-name="default">
+    <div class="page" data-name="overview">
         <div class="box">
             <div class="boxcontent">
+
+                <div class="header">
+                    <p>Velkommen, <span class="insertname"></span></p>
+                </div>
+                <div class="overviewgrid">
+                    <div @click="go2newticket" class="overviewbox noSelect" style="background-color:#3D94F6;">
+                        <img class="overviewpics" src="../images/newticket.png"><br>
+                        <div class="overviewtext trackrequests">Ny ticket</div>
+                    </div>
+                    <div class="overviewbox noSelect" style="background-color:#3D94F6;">
+                        <img class="overviewpics" src="../images/mytickets.png"><br>
+                        <div class="overviewtext trackrequests">Mine tickets</div>
+                    </div>
+                    <div class="overviewbox noSelect" style="background-color:#3D94F6;">
+                        <img class="overviewpics" src="../images/editprofile.png"><br>
+                        <div class="overviewtext trackrequests">Rediger profil</div>
+                    </div>
+                </div>
+
+
             </div>
         </div>
     </div>
@@ -20,11 +40,14 @@
 
         // Framework7 Component Methods
         methods: {
-
+            go2newticket(){
+                app.views.main.router.navigate("/newticket/", { reloadCurrent: true, })
+            },
         },
         on: {
             //pageMounted trigger når siden bliver insat i DOMen
             pageMounted: function (page) {
+                $$('.insertname').html(app.data['fornavn'] +" "+app.data['efternavn']);
             },
             pageAfterOut: function (page) {
             }
