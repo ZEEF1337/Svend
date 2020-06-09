@@ -1,11 +1,11 @@
 <template>
-    <div class="page" data-name="default">
+    <div class="page" data-name="login">
         <div class="login-page">
             <div class="form">
-                <input type="text" placeholder="Brugernavn" />
-                <input type="password" placeholder="Adgangskode" />
-                <button>login</button>
-                <p class="message">Har du ikke en konto? <a href="/register/">Opret en gratis her</a></p>
+                <input class="bnavn" type="text" placeholder="Brugernavn" />
+                <input class="pass" type="password" placeholder="Adgangskode" />
+                <button @click="login">login</button>
+                <p class="message">Har du ikke en konto? <a @click="go2Register">Opret en gratis her</a></p>
             </div>
         </div>
     </div>
@@ -25,6 +25,34 @@
         // Framework7 Component Methods
         methods: {
 
+            go2Register(){
+                app.views.main.router.navigate("/register/", { reloadCurrent: true, })
+            },
+
+            login() {
+                let bnavn = $$('.bnavn').val();
+                let pass = $$('.pass').val();
+
+                if (bnavn == "" || pass == "") {
+                    window.alert("Venlig udfyld alle felter.");
+                    return;
+                }
+
+                app.request.post(`${app.data['serverIP']}login.php`, {
+                    brugernavn: bnavn,
+                    password: pass,
+                }, function (response) {
+                    if (response.result == 0) {
+                        window.alert(response.message);
+                        return;
+                    } else {
+                        app.data['fornavn'] = response.firstname;
+                        app.data['efternavn'] = response.lastname;
+                        app.views.main.router.navigate("/overview/", { reloadCurrent: true, })
+                    }
+                }, function (e, e2) { console.error(e); console.error(e2) }, "json");
+
+            }
         },
         on: {
             //pageMounted trigger når siden bliver insat i DOMen
