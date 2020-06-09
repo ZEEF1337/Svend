@@ -1,14 +1,14 @@
 <template>
-    <div class="page" data-name="default">
+    <div class="page" data-name="register">
         <div class="login-page">
             <div class="form">
-                <input type="text" placeholder="Fornavn" />
-                <input type="text" placeholder="Efternavn" />
-                <input type="text" placeholder="Email" />
-                <input type="text" placeholder="Brugernavn" />
-                <input type="password" placeholder="Adgangskode" />
+                <input class="fnavn" type="text" placeholder="Fornavn" />
+                <input class="enavn" type="text" placeholder="Efternavn" />
+                <input class="email" type="text" placeholder="Email" />
+                <input class="bnavn" type="text" placeholder="Brugernavn" />
+                <input class="pass" type="password" placeholder="Adgangskode" />
                 <button @click="register">Opret konto</button>
-                <p class="message">Har du allerede en konto? <a href="/login/">Login her</a></p>
+                <p class="message">Har du allerede en konto? <a @click="go2Login">Login her</a></p>
             </div>
         </div>
     </div>
@@ -27,8 +27,36 @@
 
         // Framework7 Component Methods
         methods: {
-            register() {
 
+            go2Login(){
+                app.views.main.router.navigate("/login/", { reloadCurrent: true, })
+            },
+
+            register() {
+                let fnavn = $$('.fnavn').val();
+                let enavn = $$('.enavn').val();
+                let email = $$('.email').val();
+                let bnavn = $$('.bnavn').val();
+                let pass = $$('.pass').val();
+                if (fnavn == "" || enavn == "" || email == "" || bnavn == "" || pass == "") {
+                    window.alert("Venlig udfyld alle felter.");
+                    return;
+                }
+
+                app.request.post(`${app.data['serverIP']}register.php`, {
+                    fornavn: fnavn,
+                    efternavn: enavn,
+                    email: email,
+                    brugernavn: bnavn,
+                    password: pass,
+                }, function (response) {
+                    if (response.result == 0) {
+                        window.alert(response.message);
+                        return;
+                    }else{
+                        app.views.main.router.navigate("/login/", { reloadCurrent: true, })
+                    }
+                }, function (e, e2) { console.error(e); console.error(e2) }, "json");
             },
 
         },
