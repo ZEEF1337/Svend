@@ -136,3 +136,29 @@ html, body, #app{
   color:white;
   margin-top: 15px;
 }
+
+.outline{
+  border-width: 1px !important;
+  border-style: solid !important;
+  padding: 4px !important;
+  margin-bottom: 15px !important;
+}
+
+.btn{
+  text-transform: uppercase;
+  outline: 0;
+  background: #2894ee;
+  width: 25%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+.btn:hover,.btn:active,.btn:focus {
+  background: #185a91;
+}
