@@ -27,7 +27,7 @@ $UserID = getUserIDFromToken($givenToken);
 $query = "SELECT tickets.ID, tickets.CreationDate, tickets.Title, TC.Navn AS Kategori, TS.Navn AS Status FROM tickets";
 $query .= " INNER JOIN ticket_status AS TS ON tickets.`Status` = TS.ID";
 $query .= " INNER JOIN ticket_categories AS TC ON tickets.Kategori = TC.ID";
-$query .= " WHERE tickets.UserID = $UserID;";
+$query .= " WHERE tickets.UserID = $UserID ORDER BY ID DESC;";
 $stmt = $db->prepare($query);
 
 try{
