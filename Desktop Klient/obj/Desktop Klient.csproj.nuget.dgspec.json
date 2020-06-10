@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Kongen\\source\\repos\\Desktop Klient\\Desktop Klient\\Desktop Klient.csproj": {}
+    "C:\\Users\\Kongen\\Source\\Repos\\DesktopKlient\\Desktop Klient\\Desktop Klient.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Kongen\\source\\repos\\Desktop Klient\\Desktop Klient\\Desktop Klient.csproj": {
+    "C:\\Users\\Kongen\\Source\\Repos\\DesktopKlient\\Desktop Klient\\Desktop Klient.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Kongen\\source\\repos\\Desktop Klient\\Desktop Klient\\Desktop Klient.csproj",
+        "projectUniqueName": "C:\\Users\\Kongen\\Source\\Repos\\DesktopKlient\\Desktop Klient\\Desktop Klient.csproj",
         "projectName": "Desktop Klient",
-        "projectPath": "C:\\Users\\Kongen\\source\\repos\\Desktop Klient\\Desktop Klient\\Desktop Klient.csproj",
+        "projectPath": "C:\\Users\\Kongen\\Source\\Repos\\DesktopKlient\\Desktop Klient\\Desktop Klient.csproj",
         "packagesPath": "C:\\Users\\Kongen\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Kongen\\source\\repos\\Desktop Klient\\Desktop Klient\\obj\\",
+        "outputPath": "C:\\Users\\Kongen\\Source\\Repos\\DesktopKlient\\Desktop Klient\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "c:\\program files\\dotnet\\sdk\\NuGetFallbackFolder"

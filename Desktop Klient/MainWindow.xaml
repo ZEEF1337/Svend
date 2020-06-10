@@ -5,8 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Desktop_Klient"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
+        Title="Login" Height="150" Width="300" ResizeMode="NoResize" SizeToContent="WidthAndHeight">
+    <Grid x:Name="MainGrid" Width="300" Height="150" Margin="0,-16,0,0">
+        <Button x:Name="LoginBtn" Content="Login" HorizontalAlignment="Left" Margin="150,110,0,0" VerticalAlignment="Top" Width="100"/>
+        <TextBox x:Name="BrugernavnInput" HorizontalAlignment="Center" Margin="0,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Height="18"/>
+        <Label x:Name="BrugernavnLabel" Content="Brugernavn" HorizontalAlignment="Center" Margin="0,27,0,0" VerticalAlignment="Top" Padding="0,0,0,0" Width="200" FontSize="10"/>
+        <Label x:Name="AdgangskodeLabel" Content="Adgangskode" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="0,0,0,0" Width="200" FontSize="10"/>
+        <PasswordBox x:Name="AdgangskodeInput" HorizontalAlignment="Center" Margin="0,81,0,0" VerticalAlignment="Top" Width="200" Height="18"/>
     </Grid>
 </Window>
