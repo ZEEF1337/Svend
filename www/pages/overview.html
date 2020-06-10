@@ -11,7 +11,7 @@
                         <img class="overviewpics" src="../images/newticket.png"><br>
                         <div class="overviewtext trackrequests">Ny ticket</div>
                     </div>
-                    <div class="overviewbox noSelect" style="background-color:#3D94F6;">
+                    <div @click="go2mytickets" class="overviewbox noSelect" style="background-color:#3D94F6;">
                         <img class="overviewpics" src="../images/mytickets.png"><br>
                         <div class="overviewtext trackrequests">Mine tickets</div>
                     </div>
@@ -42,6 +42,9 @@
         methods: {
             go2newticket(){
                 app.views.main.router.navigate("/newticket/", { reloadCurrent: true, })
+            },
+            go2mytickets(){
+                app.views.main.router.navigate("/mytickets/", { reloadCurrent: true, })
             },
         },
         on: {
