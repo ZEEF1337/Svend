@@ -58,6 +58,15 @@ routes = [
       }
     }
   },
+  {
+    name: 'editprofile',
+    path: '/editprofile/',
+    componentUrl: './pages/editprofile.html',
+    on:{
+      pageInit: function (event, page){
+      }
+    }
+  },
   // Default route (404 page). MUST BE THE LAST
   {
     name: 'notfound',
