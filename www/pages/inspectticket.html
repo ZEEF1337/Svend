@@ -20,7 +20,7 @@
 
                 <div class="messageArea">
                     <textarea style="width: 100%;" class="outline ticketbody" placeholder="Besked" rows="5" cols="75"></textarea>
-                    <button @click="go2Overview" class="btn">Annuller</button>
+                    <button @click="go2MyTickets" class="btn">Annuller</button>
                     <button @click="postTicketReply" class="btn">Indsend</button>
                 </div>
 
@@ -45,7 +45,7 @@
 
         // Framework7 Component Methods
         methods: {
-            go2Overview(){
+            go2MyTickets(){
                 app.views.main.router.navigate("/mytickets/", { reloadCurrent: true, })
             },
 
