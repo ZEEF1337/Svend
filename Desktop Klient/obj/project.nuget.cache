@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "o59la8YV6NNqLczvMiUq3ZScPTCyWxwNTiT8RyrmFc6OanixHgcd5eIzeqQ+aTYDA1zmwA350+HmvbFP+ed/sg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Kongen\\source\\repos\\Desktop Klient\\Desktop Klient\\Desktop Klient.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Kongen\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.2\\microsoft.aspnetcore.app.ref.3.1.2.nupkg.sha512"
+  ],
+  "logs": []
+}
