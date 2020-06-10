@@ -1,0 +1,123 @@
+<template>
+    <div class="page" data-name="inspectticket">
+        <div class="box">
+            <div class="boxheader"></div>
+            <div class="boxcontent">
+
+                <div class="postArea" style="max-height: 460px;overflow: auto;margin-bottom: 25px;">
+                    <div class="ticketgrid">
+                        <div class="ticketstyle posterinfo">
+                            <div class="OPNavn"></div>
+                            <div class="OPRolle"></div>
+                            <div class="OPKlok"></div>
+                            <div class="OPDate"></div>
+                        </div>
+                        <div class="ticketstyle span-col-5">
+                            <div class="OPBody"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="messageArea">
+                    <textarea style="width: 100%;" class="outline ticketbody" placeholder="Besked" rows="5" cols="75"></textarea>
+                    <button @click="go2Overview" class="btn">Annuller</button>
+                    <button @click="postTicketReply" class="btn">Indsend</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+
+    var inspectedTicket;
+
+    return {
+
+        /**
+         * Det datasæt som framework7 bruger internt i dette view, de kan ikke tilgås udefra.
+         */
+        data: function () {
+            return {
+            };
+        },
+
+        // Framework7 Component Methods
+        methods: {
+            go2Overview(){
+                app.views.main.router.navigate("/mytickets/", { reloadCurrent: true, })
+            },
+
+            postTicketReply(){
+                let ticketbody = $$('.ticketbody').val();
+
+                if (ticketbody == "") {
+                    window.alert("Venlig skriv en besked");
+                    return;
+                }
+
+                app.request.post(`${app.data['serverIP']}postTicketReply.php`, {
+                    token: app.data['sessionToken'],
+                    body: ticketbody,
+                    ticketID: inspectedTicket,
+                }, function (response) {
+                    if (response.result == 0) {
+                        window.alert(response.message);
+                        return;
+                    } else {
+                        window.alert(response.message);
+                        app.views.main.router.navigate(`/inspectticket/${inspectedTicket}/`, { reloadCurrent: true, })
+                    }
+                }, function (e, e2) { console.error(e); console.error(e2) }, "json");
+            }
+
+        },
+        on: {
+            //pageMounted trigger når siden bliver insat i DOMen
+            pageMounted: function (page) {
+                inspectedTicket = page.detail.route.params.ticketID;
+                app.request.getJSON(`${app.data['serverIP']}getTicket.php?token=${app.data['sessionToken']}&ticketID=${inspectedTicket}`, {}, function (response) {
+                    if (response.result == 1) {
+                        $$('.boxheader').html("[" + response.Status + "] [" + response.Kategori + "] - '" + response.Titel + "'");
+                        $$('.OPNavn').html(response.Fornavn + " " + response.Efternavn);
+                        $$('.OPRolle').html(response.Rolle);
+                        $$('.OPKlok').html(response.Klok);
+                        $$('.OPDate').html(response.Dato);
+                        $$('.OPBody').html(response.Body);
+                    }
+                }, function (e, e2) { console.error(e); console.error(e2) });
+
+                app.request.getJSON(`${app.data['serverIP']}getTicketReplies.php?token=${app.data['sessionToken']}&ticketID=${inspectedTicket}`, {}, function (response) {
+                    if (response.result == 1) {
+                        let innerHTML = "";
+                        Object.keys(response.records).forEach((key, index) => {
+                            let value = response.records[key];
+                            innerHTML +=
+                                `
+                                <div class="ticketgrid">
+                                    <div class="ticketstyle posterinfo">
+                                        <div class="replyNavn">${value.Fornavn} ${value.Efternavn}</div>
+                                        <div class="replyRolle">${value.Rolle}</div>
+                                        <div class="replyKlok">${value.Klok}</div>
+                                        <div class="replyDate">${value.Dato}</div>
+                                    </div>
+                                    <div class="ticketstyle span-col-5">
+                                        <div class="replyBody">${value.Body}</div>
+                                    </div>
+                                </div>
+                                `;
+                        });
+                        $$('.postArea').append(innerHTML);
+                    }
+                }, function (e, e2) { console.error(e); console.error(e2) });
+
+
+            },
+            pageAfterOut: function (page) {
+            }
+        },
+    }
+
+
+</script>
