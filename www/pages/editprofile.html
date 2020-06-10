@@ -1,0 +1,123 @@
+<template>
+    <div class="page" data-name="editprofile">
+        <div class="box">
+            <div class="boxcontent">
+
+                <div class="profilegrid">
+                    <div style="text-align: right;">
+                        <input style="width: 100%;" class="outline tickettitle Fornavn" type="text" placeholder="Fornavn" />
+                        <input style="width: 100%;" class="outline tickettitle Efternavn" type="text" placeholder="Efternavn" />
+                        <input style="width: 100%;" class="outline tickettitle Email" type="text" placeholder="Email" />
+                        <button @click="postProfile" class="btn">Opdater</button>
+                    </div>
+
+                    <div style="text-align: right;">
+                        <input style="width: 100%;" class="outline tickettitle Gamlepass" type="password" placeholder="Gamle adgangskode" />
+                        <input style="width: 100%;" class="outline tickettitle Nypass" type="password" placeholder="Ny adgangskode" />
+                        <input style="width: 100%;" class="outline tickettitle Nypass2" type="password" placeholder="Gentag ny adgangskode" />
+                        <button @click="postChangePassword" class="btn">Opdater</button>
+                    </div>
+                </div>
+                <button style="position: fixed; bottom: 6%;right: 5%;" @click="go2Overview" class="btn">Tilbage</button>
+
+
+
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+    return {
+
+        /**
+         * Det datasæt som framework7 bruger internt i dette view, de kan ikke tilgås udefra.
+         */
+        data: function () {
+            return {
+            };
+        },
+
+        // Framework7 Component Methods
+        methods: {
+            go2Overview() {
+                app.views.main.router.navigate("/overview/", { reloadCurrent: true, })
+            },
+
+            postProfile() {
+                let fornavn = $$('.Fornavn').val();
+                let efternavn = $$('.Efternavn').val();
+                let email = $$('.Email').val();
+
+                if (fornavn == "" || efternavn == "" || email == "") {
+                    window.alert("Venlig udfyld alle felter.");
+                    return;
+                }
+
+                app.request.post(`${app.data['serverIP']}postUpdateProfile.php`, {
+                    fornavn: fornavn,
+                    efternavn: efternavn,
+                    email: email,
+                    token: app.data['sessionToken'],
+                }, function (response) {
+                    if (response.result == 0) {
+                        window.alert(response.message);
+                        return;
+                    } else {
+                        window.alert(response.message);
+                        app.views.main.router.navigate("/overview/", { reloadCurrent: true, })
+                    }
+                }, function (e, e2) { console.error(e); console.error(e2) }, "json");
+            },
+
+            postChangePassword() {
+                let oldPass = $$('.Gamlepass').val();
+                let pass = $$('.Nypass').val();
+                let pass2 = $$('.Nypass2').val();
+
+                if (oldPass == "" || pass == "" || pass2 == "") {
+                    window.alert("Venlig udfyld alle felter.");
+                    return;
+                }
+
+                if (pass != pass2) {
+                    window.alert("Sikre dig at begge nye adgangskoder matcher");
+                    return;
+                }
+
+                app.request.post(`${app.data['serverIP']}postChangePassword.php`, {
+                    oldPassword: oldPass,
+                    password: pass,
+                    token: app.data['sessionToken'],
+                }, function (response) {
+                    if (response.result == 0) {
+                        window.alert(response.message);
+                        return;
+                    } else {
+                        window.alert(response.message);
+                        app.views.main.router.navigate("/overview/", { reloadCurrent: true, })
+                    }
+                }, function (e, e2) { console.error(e); console.error(e2) }, "json");
+            },
+
+
+        },
+        on: {
+            //pageMounted trigger når siden bliver insat i DOMen
+            pageMounted: function (page) {
+                app.request.getJSON(`${app.data['serverIP']}getProfile.php?token=${app.data['sessionToken']}`, {}, function (response) {
+                    if (response.result == 1) {
+                        $$('.Fornavn').val(response.Fornavn);
+                        $$('.Efternavn').val(response.Efternavn);
+                        $$('.Email').val(response.Email);
+                    }
+                }, function (e, e2) { console.error(e); console.error(e2) });
+
+            },
+            pageAfterOut: function (page) {
+            }
+        },
+    }
+
+
+</script>
