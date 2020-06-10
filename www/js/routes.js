@@ -39,6 +39,25 @@ routes = [
       }
     }
   },
+  {
+    name: 'mytickets',
+    path: '/mytickets/',
+    componentUrl: './pages/mytickets.html',
+    on:{
+      pageInit: function (event, page){
+      }
+    }
+  },
+  {
+    name: 'inspectticket',
+    path: '/inspectticket/:ticketID?/',
+    componentUrl: './pages/inspectticket.html',
+    data: function () {
+      return {
+        projectID: routeTo.params.ticketID, // Der laves en ny Variabel som indeholder de parametre som der blev sendt med routet
+      }
+    }
+  },
   // Default route (404 page). MUST BE THE LAST
   {
     name: 'notfound',
