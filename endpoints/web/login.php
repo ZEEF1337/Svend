@@ -7,7 +7,6 @@ header("Access-Control-Allow-Methods: POST");
 header("Content-Type: application/json; charset=UTF-8");
 
 include_once ($_SERVER['DOCUMENT_ROOT']."functions/propFunctions.php");
-include_once ($_SERVER['DOCUMENT_ROOT']."database.inc");
 
 if(!isset($_POST['brugernavn']) || !isset($_POST['password'])){
     $out['result'] = 0;
@@ -29,12 +28,14 @@ if(!userExists($givenBrugernavn)){
 
 $login = verifyPass($givenBrugernavn, $givenPassword);
 $names = getFirstLastNameFromUsername($givenBrugernavn);
+$token = generateToken($givenBrugernavn);
 
 if($login == 1){
     $out['result'] = 1;
     $out['message'] = "Login successful";
     $out['firstname'] = $names['Firstname'];
     $out['lastname'] = $names['Lastname'];
+    $out['token'] = $token;
 }else{
     $out['result'] = 0;
     $out['message'] = "Forkert brugernavn eller adgangskode.";
