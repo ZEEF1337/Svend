@@ -15,7 +15,7 @@
                         <img class="overviewpics" src="../images/mytickets.png"><br>
                         <div class="overviewtext trackrequests">Mine tickets</div>
                     </div>
-                    <div class="overviewbox noSelect" style="background-color:#3D94F6;">
+                    <div @click="go2editprofile" class="overviewbox noSelect" style="background-color:#3D94F6;">
                         <img class="overviewpics" src="../images/editprofile.png"><br>
                         <div class="overviewtext trackrequests">Rediger profil</div>
                     </div>
@@ -45,6 +45,9 @@
             },
             go2mytickets(){
                 app.views.main.router.navigate("/mytickets/", { reloadCurrent: true, })
+            },
+            go2editprofile(){
+                app.views.main.router.navigate("/editprofile/", { reloadCurrent: true, })
             },
         },
         on: {
