@@ -213,26 +213,5 @@ function getUserIDFromToken($token){
 }
 
 
-function getUsernameFromToken($token){
-    $database = new Database();
-    $db = $database->getConnection();
-    $query = "SELECT Brugernavn FROM users WHERE AuthToken = '$token'";
-    $stmt = $db->prepare($query);
-    try{
-        $stmt->execute();
-        $num = $stmt->rowCount();
-        if($num>0){
-            $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            extract($row);
-            return $Brugernavn;
-        }else{
-            return;
-        }
-    } catch(PDOException $e){
-        return($e);
-    }
-}
-
-
 
 ?>
