@@ -35,6 +35,15 @@ html, body, #app{
   flex-grow: 1;
 }
 
+.boxheader{
+  text-align: center;
+  padding: 15px;
+  font-size: 18px;
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+}
+
 .boxcontent{
   padding: 35px;
 }
@@ -161,4 +170,68 @@ html, body, #app{
 
 .btn:hover,.btn:active,.btn:focus {
   background: #185a91;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+td, th {
+  border: 1px solid #000000;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #b9e0ff;
+}
+
+.inspectbtn{
+  text-decoration: none;
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+  background-color: #2894ee;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+  height: 25px;
+  line-height: 25px;
+  width: 115px;
+  display: block;
+}
+
+.noSelect{
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  user-select: none;          /* Likely future */
+}
+
+.ticketgrid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  margin-bottom: 25px;
+}
+
+.ticketstyle{
+  border-style: solid;
+  border-width: 1px;
+  padding: 5px;
+}
+
+.posterinfo{
+  border-right-style: unset;
+  text-align: center;
+  background-color: #2894ee;
+  color: whitesmoke;
+  border-color: black;
+}
+
+.span-col-5{
+  grid-column: span 5 / auto;
+  padding-left: 15px;
 }
