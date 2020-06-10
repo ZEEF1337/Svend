@@ -235,3 +235,10 @@ tr:nth-child(even) {
   grid-column: span 5 / auto;
   padding-left: 15px;
 }
+
+
+.profilegrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 75px;
+}
