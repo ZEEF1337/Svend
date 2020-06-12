@@ -18,5 +18,9 @@ namespace Desktop_Klient.Models
         public int StatusID { get; set; }
         public string Kategori { get; set; }
         public int KategoriID { get; set; }
+        public string Rolle { get; set; }
+        public int RolleID { get; set; }
+        public string Specialitet { get; set; }
+        public int SpecialitetID { get; set; }
     }
 }

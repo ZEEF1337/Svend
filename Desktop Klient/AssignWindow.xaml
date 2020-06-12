@@ -27,7 +27,7 @@
 
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding="{Binding ID}" ClipboardContentBinding="{x:Null}" Width="25"/>
-                    <DataGridTextColumn Header="NAVN" Binding="{Binding Titel}" ClipboardContentBinding="{x:Null}" Width="175"/>
+                    <DataGridTextColumn Header="NAVN" Binding="{Binding Navn}" ClipboardContentBinding="{x:Null}" Width="175"/>
                     <DataGridTextColumn Header="SPECIALITET" Binding="{Binding Specialitet}" ClipboardContentBinding="{x:Null}" Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>

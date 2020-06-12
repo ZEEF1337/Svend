@@ -5,8 +5,40 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Desktop_Klient"
         mc:Ignorable="d"
-        Title="EditUserWindow" Height="450" Width="800">
+        Title="EditUserWindow" Height="400" Width="800" ResizeMode="NoResize" SizeToContent="WidthAndHeight">
     <Grid>
-        
+        <Grid x:Name="body_grid" HorizontalAlignment="Left" Width="640" Height="380" VerticalAlignment="Top" Margin="160,1,0,0">
+            <DataGrid x:Name="body_datagrid" AreRowDetailsFrozen="True" RowHeight="30" SelectionMode="Single" CanUserReorderColumns="False" CanUserResizeColumns="False" 
+                      CanUserSortColumns="False" Width="{Binding ActualWidth, ElementName=body_grid, Mode=OneWay}" Height="{Binding ActualHeight, ElementName=body_grid, Mode=OneWay}" ScrollViewer.CanContentScroll="True" VerticalScrollBarVisibility="Visible" 
+                      HorizontalAlignment="Center" VerticalAlignment="Center" AutoGenerateColumns="False" SelectionUnit="FullRow" CanUserResizeRows="False" 
+                      CanUserDeleteRows="False" CanUserAddRows="False" IsReadOnly="True">
+
+                <DataGrid.Resources>
+                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" 
+                   Color="#FF67C1FF"/>
+                </DataGrid.Resources>
+
+                <DataGrid.ColumnHeaderStyle>
+                    <Style TargetType="{x:Type DataGridColumnHeader}">
+                        <Setter Property="FontWeight" Value="Bold" />
+                    </Style>
+                </DataGrid.ColumnHeaderStyle>
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding ID}" ClipboardContentBinding="{x:Null}" Width="25"/>
+                    <DataGridTextColumn Header="NAVN" Binding="{Binding Navn}" ClipboardContentBinding="{x:Null}" Width="175"/>
+                    <DataGridTextColumn Header="ROLLE" Binding="{Binding Rolle}" ClipboardContentBinding="{x:Null}" Width="175"/>
+                    <DataGridTextColumn Header="SPECIALITET" Binding="{Binding Specialitet}" ClipboardContentBinding="{x:Null}" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        <Button x:Name="EditEmployeeBtn" Content="REDIGER VALGT" HorizontalAlignment="Left" Margin="15,278,0,0" VerticalAlignment="Top" Width="120" Background="#FF3F9EE0" Foreground="White" HorizontalContentAlignment="Center" Height="25" Click="EditEmployee"/>
+        <Label Content="Konto valgt" HorizontalAlignment="Left" Margin="15,4,0,0" VerticalAlignment="Top" Padding="0,0,0,0" Width="120" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+        <Label x:Name="EmployeeNameLabel" Content="INGEN PERSON VALGT" HorizontalAlignment="Left" Margin="15,23,0,0" VerticalAlignment="Top" Padding="0,0,0,0" Width="120" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+        <ComboBox x:Name="RolleCombo" HorizontalAlignment="Left" Margin="15,124,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="SpecCombo" HorizontalAlignment="Left" Margin="15,0,0,0" VerticalAlignment="Center" Width="120"/>
+        <Label Content="Rolle" HorizontalAlignment="Left" Margin="15,107,0,0" VerticalAlignment="Top" Padding="0,0,0,0" Width="120" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+        <Label Content="Specialitet" HorizontalAlignment="Left" Margin="15,164,0,0" VerticalAlignment="Top" Padding="0,0,0,0" Width="120" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+        <Button x:Name="SaveEmployeeBtn" Content="GEM" HorizontalAlignment="Left" Margin="15,317,0,0" VerticalAlignment="Top" Width="120" Background="#FF3F9EE0" Foreground="White" HorizontalContentAlignment="Center" Height="25" Click="SaveEmployee"/>
     </Grid>
 </Window>

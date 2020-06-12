@@ -13,5 +13,7 @@ namespace Desktop_Klient.Models
         public string Titel { get; set; }
         public string Status { get; set; }
         public string Specialitet { get; set; }
+        public string Navn { get; set; }
+        public string Rolle { get; set; }
     }
 }

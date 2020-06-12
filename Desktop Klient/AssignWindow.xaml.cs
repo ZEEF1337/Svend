@@ -63,7 +63,7 @@ namespace Desktop_Klient
         private void FillComboEmployees()
         {
             ComboBoxItem selectedSpec = (ComboBoxItem)SpecCombo.SelectedItem;
-            string URL = "endpoints/klient/getEmployees.php";
+            string URL = "endpoints/klient/getEmployeesPerSpec.php";
             Method RestType = Method.GET;
             RestParam[] Params = new RestParam[] {
                 new RestParam { Name = "token", Value = MainWindow.LoggedinUser.Token},
@@ -82,7 +82,7 @@ namespace Desktop_Klient
                 foreach (TicketData employee in data.Records)
                 {
                     ComboBoxItem comboBoxItem = new ComboBoxItem();
-                    comboBoxItem.Content = employee.Titel;
+                    comboBoxItem.Content = employee.Navn;
                     comboBoxItem.Tag = employee.ID;
                     EmployeeCombo.Items.Add(comboBoxItem);
                 }
@@ -123,7 +123,7 @@ namespace Desktop_Klient
                     tickets.Add(new Ticket()
                     {
                         ID = employee.ID,
-                        Titel = employee.Titel,
+                        Navn = employee.Navn,
                         Specialitet = employee.Specialitet,
                     });
                 }

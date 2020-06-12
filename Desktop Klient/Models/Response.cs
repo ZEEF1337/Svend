@@ -67,6 +67,14 @@ namespace Desktop_Klient.Models
         public int KategoriID { get; set; }
 
 
+        [JsonProperty("ID")]
+        public int ID { get; set; }
+
+
+        [JsonProperty("Specialitet")]
+        public int Specialitet { get; set; }
+
+
         [JsonProperty("Records")]
         public List<TicketData> Records { get; set; }
     }
