@@ -53,7 +53,7 @@ try{
             extract($row);
             $temp = array(
                 "ID" => (int)$ID,
-                "Titel" => "$Fornavn $Efternavn",
+                "Navn" => "$Fornavn $Efternavn",
                 "Specialitet" => $Specialitet,
             );
             array_push($out["records"], $temp);
