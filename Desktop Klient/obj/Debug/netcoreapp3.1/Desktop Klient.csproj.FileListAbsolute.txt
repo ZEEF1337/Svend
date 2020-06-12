@@ -26,3 +26,5 @@ C:\Users\Kongen\Source\Repos\DesktopKlient\Desktop Klient\obj\Debug\netcoreapp3.
 C:\Users\Kongen\Source\Repos\DesktopKlient\Desktop Klient\obj\Debug\netcoreapp3.1\EditUserWindow.g.cs
 C:\Users\Kongen\Source\Repos\DesktopKlient\Desktop Klient\obj\Debug\netcoreapp3.1\EditUserWindow.baml
 C:\Users\Kongen\Source\Repos\DesktopKlient\Desktop Klient\obj\Debug\netcoreapp3.1\Desktop Klient.csprojAssemblyReference.cache
+C:\Users\Kongen\Source\Repos\DesktopKlient\Desktop Klient\obj\Debug\netcoreapp3.1\InspectWindow.g.cs
+C:\Users\Kongen\Source\Repos\DesktopKlient\Desktop Klient\obj\Debug\netcoreapp3.1\InspectWindow.baml

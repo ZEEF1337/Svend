@@ -15,5 +15,7 @@ namespace Desktop_Klient.Models
         public string Specialitet { get; set; }
         public string Navn { get; set; }
         public string Rolle { get; set; }
+        public string Klok { get; set; }
+        public string Body { get; set; }
     }
 }

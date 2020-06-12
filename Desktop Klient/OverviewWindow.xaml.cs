@@ -78,7 +78,39 @@ namespace Desktop_Klient
             Ticket rowObj = body_datagrid.SelectedItem as Ticket;
             if (rowObj == null) return;
             int ticketID = rowObj.ID;
-            MessageBox.Show(ticketID.ToString());
+
+
+            string URL = "endpoints/klient/getInspectedTicketData.php";
+            Method RestType = Method.GET;
+            RestParam[] Params = new RestParam[] {
+                new RestParam { Name = "token", Value = MainWindow.LoggedinUser.Token},
+                new RestParam { Name = "ticketID", Value = ticketID},
+            };
+            var content = propFunc.CallRest(URL, Params, RestType);
+            if (content == "")
+            {
+                MessageBox.Show("Rest fejl");
+                return;
+            }
+
+            Response data = JsonConvert.DeserializeObject<Response>(content);
+            if (data.Result == 1)
+            {
+                inspectedTicketData.ID = ticketID;
+                inspectedTicketData.Fornavn = data.Firstname;
+                inspectedTicketData.Efternavn = data.Lastname;
+                inspectedTicketData.Titel = data.Titel;
+                inspectedTicketData.Body = data.Body;
+                inspectedTicketData.CreationDate = data.CreationDate;
+                inspectedTicketData.Klok = data.Klok;
+                inspectedTicketData.Rolle = data.RolleNavn;
+                InspectWindow iWin = new InspectWindow();
+                iWin.ShowDialog();
+            }
+
+
+
+            
         }
 
         private void assignEmployeeToTicket(object sender, RoutedEventArgs e)
