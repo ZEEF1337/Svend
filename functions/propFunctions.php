@@ -1,5 +1,5 @@
 <?php
-include_once ($_SERVER['DOCUMENT_ROOT']."database.inc");
+include_once ($_SERVER['DOCUMENT_ROOT']."/SvendAPI/database.inc");
 
 function generateRandomSalt($len) {
     $database = new Database();
@@ -212,6 +212,58 @@ function getUserIDFromToken($token){
     }
 }
 
+
+function getUsernameFromToken($token){
+    $database = new Database();
+    $db = $database->getConnection();
+    $query = "SELECT Brugernavn FROM users WHERE AuthToken = '$token'";
+    $stmt = $db->prepare($query);
+    try{
+        $stmt->execute();
+        $num = $stmt->rowCount();
+        if($num>0){
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            extract($row);
+            return $Brugernavn;
+        }else{
+            return;
+        }
+    } catch(PDOException $e){
+        return($e);
+    }
+}
+
+
+function CheckSupporterToken($token){
+
+    $database = new Database();
+    $db = $database->getConnection();
+    $query = "SELECT users.Rolle, ur.Navn FROM users";
+    $query .= " INNER JOIN user_roles AS ur ON ur.ID = users.Rolle WHERE AuthToken = '$token';";
+    $stmt = $db->prepare($query);
+    try{
+        $stmt->execute();
+        $num = $stmt->rowCount();
+        if($num>0){
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            extract($row);
+            If($Rolle <= 2){
+                $out['Result'] = 1;
+                $out['Rolle'] = $Rolle;
+                $out['RolleNavn'] = $Navn;
+                return $out;
+            }else{
+                $out['Result'] = 0;
+                $out['Rolle'] = $Rolle;
+                return $out;
+            }
+        }else{
+            return;
+        }
+    } catch(PDOException $e){
+        return($e);
+    }
+}
 
 
 ?>
