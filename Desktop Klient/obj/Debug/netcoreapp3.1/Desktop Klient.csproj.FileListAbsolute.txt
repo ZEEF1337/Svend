@@ -4,7 +4,6 @@ C:\Users\Kongen\Source\Repos\DesktopKlient\Desktop Klient\bin\Debug\netcoreapp3.
 C:\Users\Kongen\Source\Repos\DesktopKlient\Desktop Klient\bin\Debug\netcoreapp3.1\Desktop Klient.runtimeconfig.dev.json
 C:\Users\Kongen\Source\Repos\DesktopKlient\Desktop Klient\bin\Debug\netcoreapp3.1\Desktop Klient.dll
 C:\Users\Kongen\Source\Repos\DesktopKlient\Desktop Klient\bin\Debug\netcoreapp3.1\Desktop Klient.pdb
-C:\Users\Kongen\Source\Repos\DesktopKlient\Desktop Klient\obj\Debug\netcoreapp3.1\Desktop Klient.csprojAssemblyReference.cache
 C:\Users\Kongen\Source\Repos\DesktopKlient\Desktop Klient\obj\Debug\netcoreapp3.1\MainWindow.g.cs
 C:\Users\Kongen\Source\Repos\DesktopKlient\Desktop Klient\obj\Debug\netcoreapp3.1\App.g.cs
 C:\Users\Kongen\Source\Repos\DesktopKlient\Desktop Klient\obj\Debug\netcoreapp3.1\Desktop Klient_MarkupCompile.cache
@@ -17,3 +16,13 @@ C:\Users\Kongen\Source\Repos\DesktopKlient\Desktop Klient\obj\Debug\netcoreapp3.
 C:\Users\Kongen\Source\Repos\DesktopKlient\Desktop Klient\obj\Debug\netcoreapp3.1\Desktop Klient.dll
 C:\Users\Kongen\Source\Repos\DesktopKlient\Desktop Klient\obj\Debug\netcoreapp3.1\Desktop Klient.pdb
 C:\Users\Kongen\Source\Repos\DesktopKlient\Desktop Klient\obj\Debug\netcoreapp3.1\Desktop Klient.genruntimeconfig.cache
+C:\Users\Kongen\Source\Repos\DesktopKlient\Desktop Klient\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\Kongen\Source\Repos\DesktopKlient\Desktop Klient\bin\Debug\netcoreapp3.1\RestSharp.dll
+C:\Users\Kongen\Source\Repos\DesktopKlient\Desktop Klient\obj\Debug\netcoreapp3.1\Desktop Klient.csproj.CopyComplete
+C:\Users\Kongen\Source\Repos\DesktopKlient\Desktop Klient\obj\Debug\netcoreapp3.1\OverviewWindow.g.cs
+C:\Users\Kongen\Source\Repos\DesktopKlient\Desktop Klient\obj\Debug\netcoreapp3.1\OverviewWindow.baml
+C:\Users\Kongen\Source\Repos\DesktopKlient\Desktop Klient\obj\Debug\netcoreapp3.1\AssignWindow.g.cs
+C:\Users\Kongen\Source\Repos\DesktopKlient\Desktop Klient\obj\Debug\netcoreapp3.1\AssignWindow.baml
+C:\Users\Kongen\Source\Repos\DesktopKlient\Desktop Klient\obj\Debug\netcoreapp3.1\EditUserWindow.g.cs
+C:\Users\Kongen\Source\Repos\DesktopKlient\Desktop Klient\obj\Debug\netcoreapp3.1\EditUserWindow.baml
+C:\Users\Kongen\Source\Repos\DesktopKlient\Desktop Klient\obj\Debug\netcoreapp3.1\Desktop Klient.csprojAssemblyReference.cache
