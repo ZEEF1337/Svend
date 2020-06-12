@@ -33,10 +33,11 @@ $database = new Database();
 $db = $database->getConnection();
 
 $query = "SELECT u.Fornavn, u.Efternavn, tickets.Title, tickets.Body, tickets.CreationDate, ts.Navn AS Status,";
-$query .= " tickets.`Status` AS StatusID, tc.Navn AS Kategori, tickets.Kategori AS KategoriID FROM tickets";
+$query .= " tickets.`Status` AS StatusID, tc.Navn AS Kategori, tickets.Kategori AS KategoriID, ur.Navn AS RolleNavn FROM tickets";
 $query .= " INNER JOIN users AS u ON u.ID = tickets.UserID";
 $query .= " INNER JOIN ticket_status AS ts ON ts.ID = tickets.`Status`";
 $query .= " INNER JOIN ticket_categories AS tc ON tc.ID = tickets.Kategori";
+$query .= " INNER JOIN user_roles AS ur ON ur.ID = u.Rolle";
 $query .= " WHERE tickets.ID = $ticketID";
 
 
@@ -59,6 +60,7 @@ try{
         $out['StatusID'] = (int)$StatusID;
         $out['Kategori'] = $Kategori;
         $out['KategoriID'] = (int)$KategoriID;
+        $out['RolleNavn'] = $RolleNavn;
         $out['Result'] = 1;
     }else{
         $out['Result'] = 0;
