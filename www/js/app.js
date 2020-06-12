@@ -11,7 +11,7 @@ var app = new Framework7({
   // App root data
   data: function () {
     return {
-      serverIP: "https://svendapi.test/endpoints/web/", //Endpoint IP
+      serverIP: "https://192.168.10.15/svendapi/endpoints/web/", //Endpoint IP
       fornavn: "", //Logged in info
       efternavn: "", //Logged in info
       sessionToken: "", //Token til API
