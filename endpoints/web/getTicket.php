@@ -6,7 +6,7 @@ header("Access-Control-Allow-Headers: X-Requested-With, Content-Type, Origin, Ca
 header("Access-Control-Allow-Methods: GET");
 header("Content-Type: application/json; charset=UTF-8");
 
-include_once ($_SERVER['DOCUMENT_ROOT']."functions/propFunctions.php");
+include_once ($_SERVER['DOCUMENT_ROOT']."/SvendAPI/functions/propFunctions.php");
 
 
 if(!isset($_GET['token']) || !isset($_GET['ticketID'])){
