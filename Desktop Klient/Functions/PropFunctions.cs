@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Desktop_Klient.Functions
 {
-    class PropFunctions
+    public class PropFunctions
     {
         public String CallRest( string URL, Array ParamArray, Method RestType)
         {

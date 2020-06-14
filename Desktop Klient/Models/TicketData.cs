@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Desktop_Klient.Models
 {
-    class TicketData
+    public class TicketData
     {
         public TicketData() { }
         public int ID { get; set; }

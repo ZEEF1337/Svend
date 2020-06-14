@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 namespace Desktop_Klient.Models
 {
-    class Response
+    public class Response
     {
         [JsonProperty("Result")]
         public int Result { get; set; }

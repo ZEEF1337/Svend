@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Desktop_Klient.Models
 {
-    class RestParam
+    public class RestParam
     {
         public string Name { get; set; }
         public object Value { get; set; }
