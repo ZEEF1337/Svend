@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="InspectWindow" Height="450" Width="800" ResizeMode="NoResize">
     <Grid>
-        <ScrollViewer x:Name="scrollViewer" Margin="10,0,10,90">
+        <ScrollViewer x:Name="scrollViewer" Margin="10,0,175,90">
             <StackPanel x:Name="StackPanel" Height="{Binding ActualHeight, ElementName=scrollViewer, Mode=OneWay}" Width="{Binding ActualWidth, ElementName=scrollViewer, Mode=OneWay}">
                 <Label x:Name="TicketTitle" Content="" Padding="0,0,0,0" FontWeight="Bold"/>
                 <TextBlock x:Name="TicketBody" TextWrapping="Wrap"/>
@@ -16,6 +16,8 @@
         </ScrollViewer>
         <TextBox x:Name="ReplyTextBox" HorizontalAlignment="Left" Margin="25,359,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="516" Height="50"/>
         <Button x:Name="SendReplyBtn" Content="Indsend" HorizontalAlignment="Left" Margin="606,359,0,0" VerticalAlignment="Top" Width="135" Height="50" Background="#FF3F9EE0" Foreground="White" Click="SendReply"/>
+        <ComboBox x:Name="StatusCombo" HorizontalAlignment="Left" Margin="649,50,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="SetStatusBtn" Content="Opdater" HorizontalAlignment="Left" Margin="672,100,0,0" VerticalAlignment="Top" Width="74" Click="SetStatus"/>
 
     </Grid>
 </Window>

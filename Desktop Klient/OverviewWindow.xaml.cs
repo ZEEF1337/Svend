@@ -104,6 +104,8 @@ namespace Desktop_Klient
                 inspectedTicketData.CreationDate = data.CreationDate;
                 inspectedTicketData.Klok = data.Klok;
                 inspectedTicketData.Rolle = data.RolleNavn;
+                inspectedTicketData.Status = data.Status;
+                inspectedTicketData.StatusID = data.StatusID;
                 InspectWindow iWin = new InspectWindow();
                 iWin.ShowDialog();
             }

@@ -25,6 +25,7 @@ namespace Desktop_Klient
         public InspectWindow()
         {
             InitializeComponent();
+            FillComboStatus();
             InsertTicket();
             InsertReplies();
         }
@@ -37,12 +38,14 @@ namespace Desktop_Klient
                 "["+ OverviewWindow.inspectedTicketData.Rolle +"] " +
                 OverviewWindow.inspectedTicketData.CreationDate +" - "+ OverviewWindow.inspectedTicketData.Klok +
                 "\n"+ OverviewWindow.inspectedTicketData.Body;
-            TicketBody.Margin = new Thickness(0, 0, 0, 4);
+            TicketBody.Margin = new Thickness(0, 0, 0, 6);
             Rectangle divider = new Rectangle();
             divider.Fill = Brushes.Black;
-            divider.Width = 600;
+            divider.Width = 800;
             divider.Height = 1;
+            divider.Margin = new Thickness(0, 0, 0, 6);
             StackPanel.Children.Add(divider);
+            scrollViewer.HorizontalScrollBarVisibility = ScrollBarVisibility.Auto;
         }
 
         private void InsertReplies()
@@ -67,7 +70,7 @@ namespace Desktop_Klient
                 {
                     TextBlock replyBlock = new TextBlock();
                     replyBlock.TextWrapping = TextWrapping.Wrap;
-                    replyBlock.Margin = new Thickness(0, 0, 0, 4);
+                    replyBlock.Margin = new Thickness(0, 0, 0, 6);
                     replyBlock.Text = "[" + reply.Navn + "] " +
                         "[" + reply.Rolle + "] " +
                         reply.CreationDate + " - " + reply.Klok +
@@ -75,16 +78,16 @@ namespace Desktop_Klient
 
                     Rectangle divider = new Rectangle();
                     divider.Fill = Brushes.Black;
-                    divider.Width = 600;
+                    divider.Width = 800;
                     divider.Height = 1;
+                    divider.Margin = new Thickness(0, 0, 0, 6);
 
 
                     StackPanel.Children.Add(replyBlock);
                     StackPanel.Children.Add(divider);
                 }
+                scrollViewer.Content = StackPanel;
             }
-            scrollViewer.Content = StackPanel;
-            scrollViewer.HorizontalScrollBarVisibility = ScrollBarVisibility.Visible;
             return;
         }
 
@@ -110,6 +113,57 @@ namespace Desktop_Klient
             if (data.Result == 1)
             {
                 this.Close();
+            }
+        }
+
+        private void SetStatus(object sender, RoutedEventArgs e)
+        {
+            ComboBoxItem selectedStatus = (ComboBoxItem)StatusCombo.SelectedItem;
+            string URL = "endpoints/klient/postStatus.php";
+            Method RestType = Method.POST;
+            RestParam[] Params = new RestParam[] {
+                new RestParam { Name = "token", Value = MainWindow.LoggedinUser.Token},
+                new RestParam { Name = "ticketID", Value = OverviewWindow.inspectedTicketData.ID},
+                new RestParam { Name = "status", Value = selectedStatus.Tag},
+            };
+            var content = propFunc.CallRest(URL, Params, RestType);
+            if (content == "")
+            {
+                MessageBox.Show("Rest fejl");
+                return;
+            }
+            Response data = JsonConvert.DeserializeObject<Response>(content);
+            if (data.Result == 1)
+            {
+                MessageBox.Show(data.Message);
+            }
+        }
+
+        private void FillComboStatus()
+        {
+            string URL = "endpoints/klient/getStatus.php";
+            Method RestType = Method.GET;
+            RestParam[] Params = new RestParam[] {
+                new RestParam { Name = "token", Value = MainWindow.LoggedinUser.Token},
+            };
+            var content = propFunc.CallRest(URL, Params, RestType);
+            if (content == "")
+            {
+                MessageBox.Show("Rest fejl");
+                return;
+            }
+
+            Response data = JsonConvert.DeserializeObject<Response>(content);
+            if (data.Result == 1)
+            {
+                foreach (TicketData status in data.Records)
+                {
+                    ComboBoxItem comboBoxItem = new ComboBoxItem();
+                    comboBoxItem.Content = status.Titel;
+                    comboBoxItem.Tag = status.ID;
+                    StatusCombo.Items.Add(comboBoxItem);
+                }
+                StatusCombo.SelectedIndex = OverviewWindow.inspectedTicketData.StatusID -1;
             }
         }
     }
